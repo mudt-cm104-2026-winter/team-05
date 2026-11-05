@@ -27,8 +27,8 @@ The entries are kept in memory: after a restart the list is empty again.
 <!-- One row per person: GitHub username and what you mainly take care of.
 No real names: this repository is public. -->
 
-| GitHub | Role |
-|---|---|
+| GitHub       | Role |
+|KlentShutina15|Seat 1|
 
 ## How we work
 
