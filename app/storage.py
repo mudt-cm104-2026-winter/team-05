@@ -1,13 +1,3 @@
-"""Where the entries are kept.
-
-For now: a Python list in memory. Simple, and it forgets everything when
-the app restarts. That is fine for this stage.
-
-The rest of the app only uses the functions below. Later in the semester
-this file can be replaced by one that keeps the entries somewhere else.
-As long as the function names stay the same, main.py does not change.
-"""
-
 _entries = []
 _next_id = 1
 
@@ -17,10 +7,33 @@ def all_entries():
     return list(_entries)
 
 
-def add_entry(thing, person):
+def add_entry(num1, op, num2, result):
     """Store a new entry and return it."""
     global _next_id
-    entry = {"id": _next_id, "thing": thing, "person": person}
+<<<<<<< Updated upstream
+    entry = {"id": _next_id,
+             "num1": num1,
+             "op": op, 
+             "num2": num2, 
+             "result": result,
+             "expression": f"{num1} {op} {num2} = {result}",
+             }
+=======
+    entry = {
+        "id": _next_id, 
+        "num1": num1,
+        "op": op, 
+        "num2": num2, 
+        "result": result
+        "expression": f"{num1} {op} {num2} = {result}",
+    }
+>>>>>>> Stashed changes
     _entries.append(entry)
     _next_id += 1
     return entry
+
+def clear_entries():
+    """Clear all entries."""
+    global _next_id
+    _entries.clear()
+    _next_id = 1   
