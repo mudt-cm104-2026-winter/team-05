@@ -10,15 +10,6 @@ def all_entries():
 def add_entry(num1, op, num2, result):
     """Store a new entry and return it."""
     global _next_id
-<<<<<<< Updated upstream
-    entry = {"id": _next_id,
-             "num1": num1,
-             "op": op, 
-             "num2": num2, 
-             "result": result,
-             "expression": f"{num1} {op} {num2} = {result}",
-             }
-=======
     entry = {
         "id": _next_id, 
         "num1": num1,
@@ -27,7 +18,6 @@ def add_entry(num1, op, num2, result):
         "result": result
         "expression": f"{num1} {op} {num2} = {result}",
     }
->>>>>>> Stashed changes
     _entries.append(entry)
     _next_id += 1
     return entry
