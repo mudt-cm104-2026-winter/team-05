@@ -1,11 +1,10 @@
 # Team project
 
-<!-- Replace the title with your project name. -->
+"A calculator that keeps a history"
 
 ## What this is
 
-<!-- One or two sentences: what does your app do, and who is it for?
-Right now it is the example "Things to bring". Replace it with your topic. -->
+This app is a calculator that helps students to calculate different assignments. This calculator can add, subtract, multiply, and divide, and it saves the history of previous calculations.
 
 ## How to run it
 
@@ -24,11 +23,10 @@ The entries are kept in memory: after a restart the list is empty again.
 
 ## Team
 
-<!-- One row per person: GitHub username and what you mainly take care of.
-No real names: this repository is public. -->
-
 | GitHub       | Role |
 |KlentShutina15|Seat 1|
+|Tbushi07      |Seat 2|
+|owen-debug3399|Seat 3|
 
 ## How we work
 
