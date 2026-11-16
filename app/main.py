@@ -1,42 +1,43 @@
-"""Things to bring: the starting point of your team project.
-
-This is an example. Replace the topic with your own: change the fields,
-the texts and the page. Grow it one pull request at a time.
-
-What happens where:
-- main.py      the web part: which address shows what (the "routes")
-- storage.py   where the entries are kept
-- templates/   the HTML page
-- static/      the stylesheet
-"""
-
 from pathlib import Path
-
 from fastapi import FastAPI, Form, Request
-from fastapi.responses import RedirectResponse
+from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
-from . import storage
+from app import storage
 
-HERE = Path(__file__).parent
+BASE_DIR = Path(__file__).resolve().parent
 
-app = FastAPI(title="Things to bring")
-app.mount("/static", StaticFiles(directory=HERE / "static"), name="static")
-templates = Jinja2Templates(directory=HERE / "templates")
+app = FastAPI()
+app.mount("/static", StaticFiles(directory=BASE_DIR / "static"), name="static")
+templates = Jinja2Templates(directory=BASE_DIR / "templates")
 
 
-@app.get("/")
-def show_list(request: Request):
-    """The start page: the form and all entries."""
+@app.get("/", response_class=HTMLResponse)
+def index(request: Request):
     return templates.TemplateResponse(
-        request, "index.html", {"entries": storage.all_entries()}
+        request=request,
+        name="index.html",
+        context={"entries": storage.all_entries()},
     )
 
 
-@app.post("/add")
-def add(thing: str = Form(...), person: str = Form(...)):
-    """The form on the start page sends its fields here."""
-    storage.add_entry(thing=thing.strip(), person=person.strip())
-    # Back to the start page. 303 tells the browser: load it with GET.
-    return RedirectResponse("/", status_code=303)
+@app.post("/calculate")
+def calculate(
+    num1: float = Form(...),
+    op: str = Form(...),
+    num2: float = Form(...),
+):
+    if op == "+":
+        result = num1 + num2
+    elif op == "-":
+        result = num1 - num2
+    elif op == "*":
+        result = num1 * num2
+    elif op == "/":
+        result = num1 / num2 if num2 != 0 else "Error (division by zero)"
+    else:
+        return RedirectResponse(url="/", status_code=303)
+
+    storage.add_entry(num1, op, num2, result)
+    return RedirectResponse(url="/", status_code=303)
