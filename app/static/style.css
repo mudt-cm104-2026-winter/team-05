@@ -1,51 +1,105 @@
-:root {
-  --bg: #fbfbfa;
-  --fg: #1c1c1a;
-  --muted: #7a7a72;
-  --line: #e2e1dc;
-  --accent: #2f6f4f;
+•⁠  ⁠{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, sans-serif;
 }
-
-* { box-sizing: border-box; }
 
 body {
-  margin: 0;
-  padding: 3rem 1rem;
-  background: var(--bg);
-  color: var(--fg);
-  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+    background-color: #f4f6f8;
+    color: #222;
+    display: flex;
+    justify-content: center;
+    padding: 40px 16px;
 }
 
-main { max-width: 36rem; margin: 0 auto; }
-
-h1 { font-size: 1.6rem; margin: 0 0 .25rem; }
-
-.intro, .empty { color: var(--muted); }
-
-form.add { display: flex; gap: .5rem; margin: 1.5rem 0 2rem; }
-
-form.add input {
-  flex: 1;
-  min-width: 0;
-  padding: .6rem .8rem;
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  background: #fff;
-  font: inherit;
+.container {
+    background: #ffffff;
+    width: 100%;
+    max-width: 480px;
+    padding: 24px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-button {
-  padding: .6rem 1rem;
-  border: 0;
-  border-radius: 6px;
-  background: var(--accent);
-  color: #fff;
-  font: inherit;
-  cursor: pointer;
+h1 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    text-align: center;
 }
 
-table { width: 100%; border-collapse: collapse; }
+h2 {
+    margin: 24px 0 12px;
+    font-size: 1.15rem;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 6px;
+}
 
-th, td { padding: .5rem; border-bottom: 1px solid var(--line); text-align: left; }
+.calc-form {
+    display: flex;
+    gap: 8px;
+}
 
-th { color: var(--muted); font-weight: 600; }
+.calc-form input,
+.calc-form select,
+.calc-form button {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.calc-form input {
+    flex: 1;
+    min-width: 0;
+}
+
+.calc-form select {
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.calc-form button {
+    background-color: #2563eb;
+    color: #fff;
+    border: none;
+    padding: 10px 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.calc-form button:hover {
+    background-color: #1d4ed8;
+}
+
+.latest-result {
+    margin-top: 16px;
+    padding: 12px;
+    background-color: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 6px;
+    color: #1e3a8a;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.history-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.history-list li {
+    background: #f9fafb;
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid #e5e7eb;
+    font-family: monospace;
+    font-size: 1rem;
+}
+
+.empty-msg {
+    color: #6b7280;
+    font-size: 0.95rem;
+}
