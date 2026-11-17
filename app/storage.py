@@ -28,3 +28,8 @@ def clear_entries():
     global _next_id
     _entries.clear()
     _next_id = 1
+
+def delete_entry(entry_id: int) -> None:
+    global _entries
+    _entries = [e for e in _entries if e.get("id") != entry_id]
+
