@@ -25,38 +25,32 @@ def index(request: Request):
 
 @app.post("/calculate")
 def calculate(
-    num1: str = Form(...),
+    num1: float = Form(...),
     op: str = Form(...),
-    num2: Optional[str] = Form(None),
+    num2: Optional[float] = Form(None),
 ):
-    try:
-        n1 = float(num1)
-        n2 = float(num2) if num2 not in (None, "") else None
-    except ValueError:
-        return RedirectResponse(url="/", status_code=303)
-
     if op == "%":
-        if n2 is not None:
-            result = (n1 / 100) * n2
+        if num2 is not None:
+            result = (num1 / 100) * num2
         else:
-            result = n1 / 100
-            n2 = 100
+            result = num1 / 100
+            num2 = 100.0
     else:
-        if n2 is None:
+        if num2 is None:
             return RedirectResponse(url="/", status_code=303)
 
         if op == "+":
-            result = n1 + n2
+            result = num1 + num2
         elif op == "-":
-            result = n1 - n2
+            result = num1 - num2
         elif op == "*":
-            result = n1 * n2
+            result = num1 * num2
         elif op == "/":
-            result = n1 / n2 if n2 != 0 else "Error (division by zero)"
+            result = num1 / num2 if num2 != 0 else "Error (division by zero)"
         else:
             return RedirectResponse(url="/", status_code=303)
 
-    storage.add_entry(n1, op, n2, result)
+    storage.add_entry(num1, op, num2, result)
     return RedirectResponse(url="/", status_code=303)
 
 

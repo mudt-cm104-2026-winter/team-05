@@ -15,7 +15,7 @@ def add_entry(num1, op, num2, result):
         "num1": num1,
         "op": op,
         "num2": num2,
-        "result": result,  # put a comma here to fix the syntax error
+        "result": result, 
         "expression": f"{num1} {op} {num2} = {result}",
     }
     _entries.append(entry)
@@ -32,4 +32,3 @@ def clear_entries():
 def delete_entry(entry_id: int) -> None:
     global _entries
     _entries = [e for e in _entries if e.get("id") != entry_id]
-

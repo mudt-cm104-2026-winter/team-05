@@ -11,7 +11,7 @@
         <h1>Calculator</h1>
 
         <form action="/calculate" method="post" class="calc-form">
-            <input type="text" inputmode="decimal" name="num1" placeholder="First number" required>
+            <input type="number" step="any" name="num1" placeholder="First number" required>
 
             <select name="op" required>
                 <option value="+">+</option>
@@ -21,7 +21,7 @@
                 <option value="%">%</option>
             </select>
 
-            <input type="text" inputmode="decimal" name="num2" placeholder="Second number">
+            <input type="number" step="any" name="num2" placeholder="Second number">
 
             <button type="submit">=</button>
         </form>
