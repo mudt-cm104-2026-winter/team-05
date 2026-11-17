@@ -72,6 +72,17 @@ h2 {
     background-color: #1d4ed8;
 }
 
+.latest-result {
+    margin-top: 16px;
+    padding: 12px;
+    background-color: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 6px;
+    color: #1e3a8a;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
 .history-list {
     list-style: none;
     display: flex;
