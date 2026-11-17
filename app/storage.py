@@ -15,7 +15,7 @@ def add_entry(num1, op, num2, result):
         "num1": num1,
         "op": op,
         "num2": num2,
-        "result": result,
+        "result": result,  # put a comma here to fix the syntax error
         "expression": f"{num1} {op} {num2} = {result}",
     }
     _entries.append(entry)
