@@ -1,4 +1,5 @@
 from pathlib import Path
+from typing import Optional
 from fastapi import FastAPI, Form, Request
 from fastapi.responses import HTMLResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
@@ -24,20 +25,52 @@ def index(request: Request):
 
 @app.post("/calculate")
 def calculate(
-    num1: float = Form(...),
+    num1: str = Form(...),
     op: str = Form(...),
-    num2: float = Form(...),
+    num2: Optional[str] = Form(None),
 ):
-    if op == "+":
-        result = num1 + num2
-    elif op == "-":
-        result = num1 - num2
-    elif op == "*":
-        result = num1 * num2
-    elif op == "/":
-        result = num1 / num2 if num2 != 0 else "Error (division by zero)"
-    else:
+    try:
+        n1 = float(num1)
+        n2 = float(num2) if num2 not in (None, "") else None
+    except ValueError:
         return RedirectResponse(url="/", status_code=303)
 
-    storage.add_entry(num1, op, num2, result)
+    if op == "%":
+        if n2 is not None:
+            result = (n1 / 100) * n2
+        else:
+            result = n1 / 100
+            n2 = 100
+    else:
+        if n2 is None:
+            return RedirectResponse(url="/", status_code=303)
+
+        if op == "+":
+            result = n1 + n2
+        elif op == "-":
+            result = n1 - n2
+        elif op == "*":
+            result = n1 * n2
+        elif op == "/":
+            result = n1 / n2 if n2 != 0 else "Error (division by zero)"
+        else:
+            return RedirectResponse(url="/", status_code=303)
+
+    storage.add_entry(n1, op, n2, result)
+    return RedirectResponse(url="/", status_code=303)
+
+
+@app.post("/clear")
+def clear_history():
+    storage.clear_entries()
+    return RedirectResponse(url="/", status_code=303)
+
+
+@app.post("/delete/{entry_id}")
+def delete_entry(entry_id: int):
+    if hasattr(storage, "delete_entry"):
+        storage.delete_entry(entry_id)
+    else:
+        entries = storage.all_entries()
+        entries[:] = [e for e in entries if e.get("id") != entry_id]
     return RedirectResponse(url="/", status_code=303)
