@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
     <link rel="stylesheet" href="/static/style.css">
@@ -11,16 +11,17 @@
         <h1>Calculator</h1>
 
         <form action="/calculate" method="post" class="calc-form">
-            <input type="number" step="any" name="num1" placeholder="First number" required>
+            <input type="text" inputmode="decimal" name="num1" placeholder="First number" required>
 
             <select name="op" required>
                 <option value="+">+</option>
                 <option value="-">-</option>
-                <option value=""></option>
+                <option value="*">*</option>
                 <option value="/">/</option>
+                <option value="%">%</option>
             </select>
 
-            <input type="number" step="any" name="num2" placeholder="Second number" required>
+            <input type="text" inputmode="decimal" name="num2" placeholder="Second number">
 
             <button type="submit">=</button>
         </form>
@@ -31,11 +32,24 @@
             </div>
         {% endif %}
 
-        <h2>History</h2>
+        <div class="history-header">
+            <h2>History</h2>
+            {% if entries %}
+                <form action="/clear" method="post">
+                    <button type="submit" class="clear-btn">Clear</button>
+                </form>
+            {% endif %}
+        </div>
+
         {% if entries %}
             <ul class="history-list">
                 {% for entry in entries %}
-                    <li>{{ entry.expression }}</li>
+                    <li>
+                        <span>{{ entry.expression }}</span>
+                        <form action="/delete/{{ entry.id }}" method="post">
+                            <button type="submit" class="delete-btn">Delete</button>
+                        </form>
+                    </li>
                 {% endfor %}
             </ul>
         {% else %}

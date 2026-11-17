@@ -1,4 +1,4 @@
-•⁠  ⁠{
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -28,11 +28,17 @@ h1 {
     text-align: center;
 }
 
-h2 {
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin: 24px 0 12px;
-    font-size: 1.15rem;
     border-bottom: 1px solid #e5e7eb;
     padding-bottom: 6px;
+}
+
+h2 {
+    font-size: 1.15rem;
 }
 
 .calc-form {
@@ -83,6 +89,33 @@ h2 {
     text-align: center;
 }
 
+.clear-btn,
+.delete-btn {
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.clear-btn {
+    background-color: #e5e7eb;
+    color: #374151;
+}
+
+.clear-btn:hover {
+    background-color: #d1d5db;
+}
+
+.delete-btn {
+    background-color: #fee2e2;
+    color: #b91c1c;
+}
+
+.delete-btn:hover {
+    background-color: #fecaca;
+}
+
 .history-list {
     list-style: none;
     display: flex;
@@ -91,6 +124,9 @@ h2 {
 }
 
 .history-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background: #f9fafb;
     padding: 10px 12px;
     border-radius: 6px;
