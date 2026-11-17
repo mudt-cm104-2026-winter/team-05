@@ -23,29 +23,24 @@ The entries are kept in memory: after a restart the list is empty again.
 
 ## Team
 
-| GitHub       | Role |
-|KlentShutina15|Seat 1|
-|Tbushi07      |Seat 2|
-|owen-debug3399|Seat 3|
+| GitHub         | Role   |
+| KlentShutina15 | Seat 1 |
+| Tbushi07       | Seat 2 |
+| owen-debug3399 | Seat 3 |
 
 ## How we work
 
-<!-- How your team uses Git. For example:
-- one branch per issue, named after it: `12-add-glossary`
-- every pull request needs one approval from another team member
-- the author merges after the approval
-- every pull request adds a line to CHANGELOG.md
--->
+- Everyone clones the repository and creates their own branch with their real name.
+- We write the issues we need to fix and work on as tasks.
+- We separate the work equally and work on the issues together.
+- After one pushes the code, the other two check it in pull requests and approve it.
+- When we close an issue, we try to improve the app by adding extra features.
 
 ## Sources
 
-<!-- One entry per source, added on the day you use it:
-- 2026-11-05: <title or link>, used for <what>
--->
+2026-11-17: https://www.codechef.com/html-online-compiler -> we used it to see how the HTML and CSS code looked on a website.
 
 ## Use of AI
 
-<!-- One entry per use, added on the day you use it:
-- 2026-11-05: <tool>, used for <what>, checked by <how you checked the result>
-"none" is a valid entry.
--->
+2026-11-16: Gemini, we used it for commands that weren't clear to us at the beginning.
+2026-11-17: Gemini, we used it for code generation/debugging when we were stuck.
